@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Heading />
+    <InputFields v-on:add-todo="addtodo" />
+    <Todos :todoList="todoList" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Heading from "../components/Todo-List/Heading.vue";
+import InputFields from "../components/Todo-List/InputFields.vue";
+import Todos from "../components/Todo-List/Todos.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    Heading,
+    InputFields,
+    Todos,
+  },
+  data: function () {
+    return { todoList: [] };
+  },
+  methods: {
+    addtodo: function (todo) {
+      this.todoList.push(todo);
+    },
+  },
+};
 </script>
