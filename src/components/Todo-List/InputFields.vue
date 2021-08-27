@@ -21,6 +21,7 @@ export default {
       this.$emit("add-todo", {
         title: this.title,
         desc: this.desc,
+        id: Math.random(),
       });
     },
   },
@@ -39,26 +40,27 @@ export default {
   font-size: 1.5rem;
   padding: 0.1rem;
   border: none;
-  border-bottom: solid 2px blue;
+  border-bottom: solid 2px var(--theme);
   outline: none;
-  font-weight: 700;
+  font-weight: 500;
 }
 .inputFieldsDiv input::placeholder {
   text-transform: capitalize;
-  font-weight: 400;
+  font-weight: 200;
   color: rgba(0, 0, 0, 0.781);
 }
 .inputFieldsDiv button {
+  font-family: Arial, Helvetica, sans-serif;
   width: 100px;
   padding: 0.3rem;
   margin-top: 1rem;
   font-size: 1rem;
-  color: blue;
+  color: var(--theme);
   background-color: white;
-  border: solid 1px blue;
+  border: solid 1px var(--theme);
 }
 .inputFieldsDiv button :hover {
   color: white;
-  background-color: blue;
+  background-color: var(--theme);
 }
 </style>

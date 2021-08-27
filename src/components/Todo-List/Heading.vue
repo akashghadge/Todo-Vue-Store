@@ -12,8 +12,7 @@ export default {
 .heading {
   font-size: 3rem;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  background-color: blue;
+  color: var(--theme);
   text-align: center;
   padding: 2rem 0rem;
 }
