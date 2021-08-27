@@ -4,7 +4,10 @@
     <br />
     <input type="text" placeholder="description" v-model="desc" />
     <br />
-    <button class="addButton" @click="addTodo()">Add Todo</button>
+    <button class="addButton" @click="addTodo()">
+      <span v-if="loaderButton"> Add Todo </span>
+      <span v-else> ... </span>
+    </button>
   </div>
 </template>
 
@@ -13,16 +16,26 @@ export default {
   name: "InputFields",
   data: function () {
     console.log("hello");
-    return { title: "", desc: "" };
+    return { title: "", desc: "", loaderButton: true };
   },
   methods: {
     addTodo() {
+      if (this.title.length == 0 || this.desc.length == 0) {
+        alert("title and desc must have value");
+        return;
+      }
+      this.loaderButton = false;
+      setTimeout(() => {
+        this.loaderButton = true;
+      }, 500);
       console.log(this.title, this.desc);
       this.$emit("add-todo", {
         title: this.title,
         desc: this.desc,
-        id: Math.random(),//randomise id quick solution
+        id: Math.random(), //randomise id quick solution
       });
+      this.title = "";
+      this.desc = "";
     },
   },
 };
