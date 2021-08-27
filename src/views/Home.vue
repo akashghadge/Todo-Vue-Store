@@ -20,6 +20,7 @@ export default {
   },
   data: function () {
     return {
+      // todo list main varible
       todoList: [
         { id: 1, title: "akash", desc: "Enim mollit aliquip elit veniam ex. Laborum nulla amet ad et fugiat laborum cupidatat velit qui Lorem mollit Lorem. Excepteur ut est occaecat ea et. Quis dolor nostrud aliquip ad fugiat dolor ut." },
         { id: 2, title: "akash", desc: "ghadge" },
@@ -28,9 +29,11 @@ export default {
     };
   },
   methods: {
+    // add todo function
     addtodo: function (todo) {
       this.todoList.push(todo);
     },
+    // delete todo 
     deleteTodo(todo) {
       this.todoList = this.todoList.filter((value) => {
         if (value.id == todo.id) {

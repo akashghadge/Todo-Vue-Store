@@ -21,7 +21,7 @@ export default {
       this.$emit("add-todo", {
         title: this.title,
         desc: this.desc,
-        id: Math.random(),
+        id: Math.random(),//randomise id quick solution
       });
     },
   },

@@ -15,6 +15,7 @@ export default {
     todo: Object,
   },
   methods: {
+    // emiting event for parent and passing unique id
     deleteTodo(e, todoId) {
       this.$emit("delete-todo", { id: todoId });
     },

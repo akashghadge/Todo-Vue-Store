@@ -1,5 +1,6 @@
 <template>
   <div class="allTodo">
+    <!-- rendring each todo -->
     <div class="todoDiv" v-for="todo in todoList" v-bind:key="todo.id">
       <SingleTodo :todo="todo" v-on:delete-todo="deleteTodo" />
     </div>
@@ -19,6 +20,7 @@ export default {
     return {};
   },
   methods: {
+    // passing event to parent for deletion
     deleteTodo(todo) {
       this.$emit("delete-todo-main", todo);
     },
