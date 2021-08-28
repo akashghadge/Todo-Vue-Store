@@ -20,23 +20,30 @@ export default {
   },
   methods: {
     addTodo() {
-      if (this.title.length == 0 || this.desc.length == 0) {
-        alert("title and desc must have value");
-        return;
-      }
+      // loader for button
       this.loaderButton = false;
       setTimeout(() => {
         this.loaderButton = true;
       }, 500);
-      console.log(this.title, this.desc);
-      this.$emit("add-todo", {
+      // if todo is empty
+      if (this.title.length == 0 || this.desc.length == 0) {
+        alert("title and desc must have value");
+        return;
+      }
+      let todo = {
         title: this.title,
         desc: this.desc,
         id: Math.random(), //randomise id quick solution
-      });
+      };
+      // adding todo to store
+      this.$store.commit("addTodo", todo);
+
       this.title = "";
       this.desc = "";
     },
+  },
+  mounted() {
+    console.log(this.$store.state);
   },
 };
 </script>
@@ -71,9 +78,5 @@ export default {
   color: var(--theme);
   background-color: white;
   border: solid 1px var(--theme);
-}
-.inputFieldsDiv button :hover {
-  color: white;
-  background-color: var(--theme);
 }
 </style>

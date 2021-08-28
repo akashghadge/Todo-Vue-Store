@@ -1,14 +1,14 @@
 <template>
   <div class="quote">
     <!-- conditional rendring -->
-    <div v-if="quotes.length != 0">
+    <div v-if="quotesStore.length != 0">
       <h1>
         <q>
-          {{ quotes[quoteI].text }}
+          {{ quotesStore[quoteI].text }}
         </q>
       </h1>
       <br />
-      <p>-{{ quotes[quoteI].author }}</p>
+      <p>-{{ quotesStore[quoteI].author }}</p>
     </div>
     <div v-else>
       <h1>Loading ...</h1>
@@ -26,22 +26,17 @@ export default {
   },
   methods: {},
   mounted() {
-    // quote fetch api
-    const url = "https://type.fit/api/quotes";
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((data) => {
-        // console.log(data);
-        this.quotes = data;
-      })
-      .catch((err) => {
-        alert(err);
-        console.log(err);
-      });
+    // fetching api data for store
+    this.$store.dispatch("apiFetch");
     // changing quote after every 5 sec
     setInterval(() => {
       this.quoteI++;
     }, 5000);
+  },
+  computed: {
+    quotesStore() {
+      return this.$store.state.quotes;
+    },
   },
 };
 </script>

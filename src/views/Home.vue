@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <Heading />
-    <InputFields v-on:add-todo="addtodo" />
-    <Todos :todoList="todoList" v-on:delete-todo-main="deleteTodo" />
+    <InputFields />
+    <Todos />
   </div>
 </template>
 
@@ -18,26 +18,9 @@ export default {
     InputFields,
     Todos,
   },
-  data: function () {
-    return {
-      // todo list main varible
-      todoList: [],
-    };
+  data() {
+    return {};
   },
-  methods: {
-    // add todo function
-    addtodo: function (todo) {
-      this.todoList.push(todo);
-    },
-    // delete todo
-    deleteTodo(todo) {
-      this.todoList = this.todoList.filter((value) => {
-        if (value.id == todo.id) {
-          return false;
-        }
-        return true;
-      });
-    },
-  },
+  methods: {},
 };
 </script>

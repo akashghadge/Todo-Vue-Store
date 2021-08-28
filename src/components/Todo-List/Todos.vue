@@ -1,8 +1,8 @@
 <template>
   <div class="allTodo">
     <!-- rendring each todo -->
-    <div class="todoDiv" v-for="todo in todoList" v-bind:key="todo.id">
-      <SingleTodo :todo="todo" v-on:delete-todo="deleteTodo" />
+    <div class="todoDiv" v-for="todo in todoListStore" v-bind:key="todo.id">
+      <SingleTodo :todo="todo" />
     </div>
   </div>
 </template>
@@ -13,16 +13,13 @@ export default {
   components: {
     SingleTodo,
   },
-  props: {
-    todoList: Array,
-  },
   data() {
     return {};
   },
-  methods: {
-    // passing event to parent for deletion
-    deleteTodo(todo) {
-      this.$emit("delete-todo-main", todo);
+  methods: {},
+  computed: {
+    todoListStore() {
+      return this.$store.state.todoList;
     },
   },
 };
